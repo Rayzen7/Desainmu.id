@@ -1,0 +1,10 @@
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+    "paths": {
+      "@adonisjs/websocket": ["./node_modules/@adonisjs/websocket/build/adonis-typings"]
+    },
+  }
+}

@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'poppins-semibold';
+    src: url('./public/fonts/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'poppins-bold';
+    src: url('./public/fonts/Poppins-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'poppins-medium';
+    src: url('./public/fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'poppins-regular';
+    src: url('./public/fonts/Poppins-Regular.ttf');
+}
+
+body {
+    background-color: white;
+    color: black;
+}  
+
+html {
+    scroll-behavior: smooth;
+}
+  
+
+@theme default {
+    --color-primary: #53B0FF;
+    --color-secondary: #FFAA11;
+    --color-background: #F0F0F0;
+    --color-gray: #858585;
+    --font-poppins_regular: 'poppins-regular';
+    --font-poppins_medium: 'poppins-medium';
+    --font-poppins_semibold: 'poppins-semibold';
+    --font-poppins_bold: 'poppins-bold';
+}
+
+.responsive {
+    display: block;
+}
+
+.responsive-flex {
+    display: flex;
+}
+
+.image {
+    display: block;
+}
+
+.image-reverse {
+    display: none;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .image {
+        display: none;
+    }
+
+    .responsive-flex {
+        display: none;
+    }
+
+    .responsive {
+        display: none;
+    }
+
+    .image-reverse {
+        display: block;
+    }
+}

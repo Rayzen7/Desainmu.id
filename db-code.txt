@@ -1,0 +1,95 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table Users {
+  id integer [primary key]
+  email email
+  username varchar
+  password varchar
+  gender string
+  address string
+  no_hp string
+  date_of_birth date
+  role_id integer
+  created_at timestamp
+}
+
+Table Role {
+  id integer [primary key]
+  name varchar
+}
+
+Table Product {
+  id integer [primary key]
+  name varchar
+  image varchar
+  description varchar
+  quantity integer
+  price integer
+  created_by integer
+  category_id integer
+}
+
+Table Comment {
+  id integer [primary key]
+  user_id integer
+  message varchar
+  product_id integer
+}
+
+Table Category {
+  id integer [primary key]
+  name varchar
+}
+
+Table Transaction {
+  id integer [primary key]
+  user_id integer
+  product_id integer
+  quantity integer
+  total integer
+  status enum
+  delivered_status_1 text
+  delivered_status_2 text
+  delivered_status_3 text
+  delivered_status_4 text
+}
+
+Table Feedback {
+  id integer
+  name varchar
+  comment varchar
+}
+
+Table Chat {
+  id integer
+  sender integer
+  message varchar
+  image varchar
+  receiver integer
+  room_id integer
+}
+
+Table RoomChat {
+  id integer
+  sender integer
+  receiver integer
+}
+
+Ref: Users.role_id < Role.id
+
+Ref: Product.created_by < Users.id
+
+Ref: Chat.sender < Users.id
+Ref: Chat.receiver < Users.id
+Ref: Chat.room_id < RoomChat.id
+
+Ref: RoomChat.sender < Users.id
+Ref: RoomChat.receiver < Users.id
+
+Ref: Comment.user_id < Users.id
+Ref: Comment.product_id < Product.id
+Ref: Product.category_id < Category.id
+
+Ref: Transaction.product_id < Product.id
+Ref: Transaction.user_id < Users.id
