@@ -78,12 +78,14 @@ export default class AuthController {
     await user.load('product', (productQuery) => {
       productQuery.preload('transaction')
       productQuery.preload('comment')
+      productQuery.preload('category')
     })
     await user.load('transaction')
     await user.load('comment')
 
     const transactionTotal = user.product.reduce((sum, product) => {
-      const totalPerProduct = product.transaction.reduce((tSum, trx) => tSum + trx.total, 0)
+      const validTransactions = product.transaction.filter((trx) => trx.status !== 'canceled')
+      const totalPerProduct = validTransactions.reduce((tSum, trx) => tSum + trx.total, 0)
       return sum + totalPerProduct
     }, 0)
 
