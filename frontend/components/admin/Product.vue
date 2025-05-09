@@ -8,6 +8,8 @@
     import { useRouter } from 'vue-router';
     import cookie from 'js-cookie';
     import Swal from 'sweetalert2';
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
     
     interface userDataProp {
         id: number,
@@ -29,6 +31,7 @@
     const meData = ref<userDataProp[]>([]);
 
     onMounted(() => {
+        AOS.init();
         const fetchProduct = async() => {
             try {
                 const response = await API.get('/me', {
@@ -91,8 +94,8 @@
 </script>
 
 <template>
-    <section class="min-h-screen">
-        <div class="flex justify-between items-center">
+    <section class="min-h-screen" data-aos="fade-up" data-aos-duration="900">
+        <div class="flex justify-start lg:gap-0 gap-6 lg:justify-between items-center">
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Product List</h1>
             <nuxt-link to="/admin/product/add">
                 <button class="font-poppins_medium text-white bg-green-500 p-2 cursor-pointer rounded-md">
@@ -100,14 +103,14 @@
                 </button>
             </nuxt-link>
         </div>
-        <div class="mt-8 flex justify-start flex-wrap items-center gap-8">
+        <div class="lg:mt-8 mt-14 flex justify-center lg:justify-start flex-wrap items-center lg:gap-8 gap-4">
             <div class="" v-for="(product, index) in meData" :key="index">
-                <div class="bg-white h-auto w-[220px] p-4 rounded-lg">
+                <div class="bg-white h-auto w-[140px] lg:w-[220px] p-4 rounded-lg">
                     <img class="w-full rounded-md mx-auto h-auto" :src="`http://localhost:3333/image/${product.image}`" alt=""/>
                     <div class="mt-3 flex flex-col gap-1">
-                        <h1 class="text-[16px] text-primary font-poppins_medium">{{ product.name.length > 15 ? product.name.slice(0, 15) + '...' : product.name }}</h1>
-                        <p class="text-[14px] font-poppins_regular">{{ product.category.name }}</p>
-                        <p class="text-[14px] font-poppins_medium text-secondary">{{ RupiahFormat(product.price) }}</p>
+                        <h1 class="lg:text-[16px] text-[14px] text-primary font-poppins_medium">{{ product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name }}</h1>
+                        <p class="lg:text-[14px] text-[10px] font-poppins_regular">{{ product.category.name }}</p>
+                        <p class="lg:text-[14px] text-[12px] font-poppins_medium text-secondary">{{ RupiahFormat(product.price) }}</p>
                         <div class="mt-2 flex items-center gap-2">
                             <button @click="handleEdit(product.id)" class="font-poppins_medium text-white bg-blue-500 p-1 cursor-pointer rounded-md">
                                 <img class="w-[16px] h-auto" :src="editIcon" alt=""/>

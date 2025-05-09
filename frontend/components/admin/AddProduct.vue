@@ -1,11 +1,12 @@
 <script setup lang="ts">
     import { API } from '#imports';
     import { onMounted, ref } from '#imports';
-    import RupiahFormat from '~/public/icon/chevron.svg';
     import cookie from 'js-cookie';
     import { useRouter } from 'vue-router';
     import preview from '~/public/product/preview.jpg';
     import Swal from 'sweetalert2';
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
 
     interface productDataProp {
         id: number,
@@ -25,10 +26,11 @@
         quantity: 0,
         description: '',
         price: '',
-        category: 0,
+        category: '',
     })
 
     onMounted(() => {
+        AOS.init();
         const fetchCategory = async() => {
             try {
                 const response = await API.get('/category/product', {
@@ -139,13 +141,13 @@
 </script>
 
 <template>
-    <section>
+    <section data-aos="fade-up" data-aos-duration="900">
         <div class="">
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Add Product</h1>
         </div>
-        <div class="mt-8 flex justify-items-center items-start gap-10">
+        <div class="mt-8 lg:flex-row flex-col flex justify-center items-center lg:items-start gap-10">
             <div class="">
-                <img :src="previewImage ? previewImage : preview" alt="" class="w-[380px] h-auto rounded-md"/>
+                <img :src="previewImage ? previewImage : preview" alt="" class="lg:w-[380px] w-[280px] h-auto rounded-md"/>
             </div>
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
@@ -168,7 +170,7 @@
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
                     <label class="text-[16px] font-poppins_medium">Price: </label>
-                    <input v-model="productPostData.price" class="border-2 border-black outline-0 rounded-md w-[260px] px-3 font-poppins_regular text-[14px] py-3" type="number" placeholder="Your Product"/>
+                    <input v-model="productPostData.price" class="border-2 border-black outline-0 rounded-md w-[260px] px-3 font-poppins_regular text-[14px] py-3" type="number" placeholder="Your Price"/>
                 </div>
                 <div class="flex flex-col gap-2">
                     <label class="text-[16px] font-poppins_medium">Category: </label>

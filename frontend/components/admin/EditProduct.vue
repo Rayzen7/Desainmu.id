@@ -2,9 +2,11 @@
     import { API } from '#imports';
     import { onMounted, ref } from '#imports';
     import cookie from 'js-cookie';
-    import { useRouter } from 'vue-router';
+    import { useRouter, useRoute } from 'vue-router';
     import preview from '~/public/product/preview.jpg';
     import Swal from 'sweetalert2';
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
 
     interface productDataProp {
         id: number,
@@ -19,15 +21,18 @@
     const selectedImage = ref<File | null>(null);
     const previewImage = ref<string | null>(null);
     const navigate = useRouter();
+    const route = useRoute();
+    const id = route.params.id;
     const productPostData = ref({
         name: '',
         quantity: 0,
         description: '',
         price: '',
-        category: 0,
+        category: '',
     })
 
     onMounted(() => {
+        AOS.init();
         const fetchCategory = async() => {
             try {
                 const response = await API.get('/category/product', {
@@ -42,7 +47,28 @@
             }
         }
 
+        const fetchProductId = async() => {
+            try {
+                const response = await API.get(`/admin/product/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                const getById = response.data.product;
+                productPostData.value.name = getById.name;
+                previewImage.value = `http://localhost:3333/image/${getById.image}`; 
+                productPostData.value.quantity = getById.quantity;
+                productPostData.value.price = getById.price;
+                productPostData.value.category = getById.categoryId;
+                productPostData.value.description = getById.description;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
         fetchCategory();
+        fetchProductId();
     });
 
     // const handleFileChange = (e: any) => {
@@ -103,13 +129,14 @@
 
             await new Promise(resolve => setTimeout(resolve, 1000));
             const formData = new FormData();
+            formData.append('_method', 'PUT');
             formData.append('name', productPostData.value.name);
             formData.append('image', selectedImage.value ?? '');
             formData.append('description', productPostData.value.description);
             formData.append('quantity', `${productPostData.value.quantity}`);
             formData.append('price', `${productPostData.value.price}`);
             formData.append('category_id', `${productPostData.value.category}`);
-            const response = await API.post('/admin/product', formData, {
+            const response = await API.put(`/admin/product/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -138,13 +165,13 @@
 </script>
 
 <template>
-    <section>
+    <section data-aos="fade-up" data-aos-duration="900">
         <div class="">
-            <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Add Product</h1>
+            <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Edit Product</h1>
         </div>
-        <div class="mt-8 flex justify-items-center items-start gap-10">
+        <div class="mt-8 lg:flex-row flex-col flex justify-center items-center lg:items-start gap-10">
             <div class="">
-                <img :src="previewImage ? previewImage : preview" alt="" class="w-[380px] h-auto rounded-md"/>
+                <img :src="previewImage ? previewImage : preview" alt="" class="lg:w-[380px] w-[280px] h-auto rounded-md"/>
             </div>
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col gap-2">
@@ -178,7 +205,7 @@
                         </option>
                     </select>
                 </div>
-                <button @click="handleSubmit" class="w-full h-[50px] cursor-pointer mt-2 border-2 border-primary hover:text-primary hover:bg-transparent duration-200 rounded-md text-[14px] font-poppins_medium text-white bg-primary">Add Product</button>
+                <button @click="handleSubmit" class="w-full h-[50px] cursor-pointer mt-2 border-2 border-primary hover:text-primary hover:bg-transparent duration-200 rounded-md text-[14px] font-poppins_medium text-white bg-primary">Edit Product</button>
             </div>
         </div>
     </section>
