@@ -1,7 +1,6 @@
 <script setup lang="ts">
     import { API } from '#imports';
     import { onMounted, ref } from '#imports';
-    import RupiahFormat from '~/public/icon/chevron.svg';
     import cookie from 'js-cookie';
     import { useRouter } from 'vue-router';
     import preview from '~/public/product/preview.jpg';
