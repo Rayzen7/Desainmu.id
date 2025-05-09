@@ -134,31 +134,52 @@
         chartData.value.labels = allMonths
         chartData.value.datasets[0].data = data
 
+        const transactionDataTotal = meData.value?.transactionTotal ?? 0;
+        const reviewDataCount = meData.value?.reviewCount ?? 0;
+        const orderDataTotal = meData.value?.transactionCount ?? 0;
+        const productDataTotal = meData.value?.productCount ?? 0;        
+
         chartKey.value++
         const transactionTotalInterval = setInterval(() => {
-            transactionTotalBefore.value+= 1000;
-            if (transactionTotalBefore.value === meData.value?.transactionTotal) {
-                clearInterval(transactionTotalInterval);
-            }            
+            if (transactionDataTotal > 0) {
+                transactionTotalBefore.value+= 1000;
+                if (transactionTotalBefore.value === transactionDataTotal) {
+                    clearInterval(transactionTotalInterval);
+                }
+            } else {
+              clearInterval(transactionTotalInterval);
+            }
         }, 0);
 
         const reviewTotalInterval = setInterval(() => {
-            reviewTotalBefore.value++;
-            if (reviewTotalBefore.value === meData.value?.reviewCount) {
+            if (reviewDataCount > 0) {
+                reviewTotalBefore.value++;
+                if (reviewTotalBefore.value === reviewDataCount) {
+                  clearInterval(reviewTotalInterval);
+                }
+            } else {
               clearInterval(reviewTotalInterval);
             }
         }, 700);
 
         const orderTotalInterval = setInterval(() => {
-            orderTotalBefore.value++;
-            if (orderTotalBefore.value === meData.value?.transactionCount) {
+            if (orderDataTotal > 0) {
+                orderTotalBefore.value++;
+                if (orderTotalBefore.value === orderDataTotal) {
+                  clearInterval(orderTotalInterval);
+                }
+            } else {
               clearInterval(orderTotalInterval);
             }
         }, 700);
 
         const productTotalInterval = setInterval(() => {
-            productTotalBefore.value++;
-            if (productTotalBefore.value === meData.value?.productCount) {
+            if (productDataTotal > 0) {
+                productTotalBefore.value++;
+                if (productTotalBefore.value === productDataTotal) {
+                  clearInterval(productTotalInterval);
+                }
+            } else {
               clearInterval(productTotalInterval);
             }
         }, 700);        
@@ -259,8 +280,11 @@
                 <p class="lg:text-[18px] text-primary text-[20px] font-poppins_regular">{{ RupiahFormat(transactionTotalBefore || 0) }}</p>
             </div>
             <div class=" overflow-y-scroll no-scrollbar">
-                <div class="mt-6 h-[500px] lg:w-full w-[800px]">
+                <div v-if="meData?.monthlySales.length" class="mt-6 h-[500px] lg:w-full w-[800px]">
                   <Line :key="chartKey" :data="chartData" :options="chartOptions" />
+                </div>
+                <div class="" v-else>
+                  <p class="text-gray font-poppins_medium text-[16px]">Data not Found</p>
                 </div>
             </div>
         </div>

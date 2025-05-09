@@ -88,9 +88,11 @@
     <section class="min-h-screen">
         <div class="flex justify-between items-center">
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Product List</h1>
-            <button class="font-poppins_medium text-white bg-green-500 p-2 cursor-pointer rounded-md">
-                <img class="w-[26px] h-auto" :src="plusIcon"  alt=""/>
-            </button>
+            <nuxt-link to="/admin/product/add">
+                <button class="font-poppins_medium text-white bg-green-500 p-2 cursor-pointer rounded-md">
+                    <img class="w-[26px] h-auto" :src="plusIcon"  alt=""/>
+                </button>
+            </nuxt-link>
         </div>
         <div class="mt-8 flex justify-start items-center gap-8">
             <div class="" v-for="(product, index) in meData" :key="index">
