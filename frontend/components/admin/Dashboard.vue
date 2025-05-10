@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { API } from '#imports'
     import cookie from 'js-cookie'
-    import { ref, onMounted, onUnmounted } from 'vue'
+    import { ref, onMounted, computed } from 'vue'
     import RupiahFormat from '~/utils/RupiahFormat'
     import AOS from 'aos';
     import 'aos/dist/aos.css';
@@ -39,6 +39,7 @@
     const reviewTotalBefore = ref(0);
     const orderTotalBefore = ref(0);
     const productTotalBefore = ref(0);
+    const selectedYear = ref<any>(2025)
 
     const chartData = ref({
       labels: [] as string[],
@@ -89,7 +90,23 @@
       }
     }
 
-    const generateAllMonths = (year: number): string[] => {
+    const updateChart = () => {
+      if (!meData.value?.monthlySales) return
+
+      const monthlyMap = meData.value.monthlySales.reduce((acc, item) => {
+        acc[item.month] = item.monthTotal
+        return acc
+      }, {} as Record<string, number>)
+    
+      const labels = generateAllMonths.value
+      const data = labels.map(month => monthlyMap[month] || 0)
+    
+      chartData.value.labels = labels
+      chartData.value.datasets[0].data = data
+      chartKey.value++
+    }
+
+    const generateAllMonths = computed(() => {
       const months = [
         'January',
         'February',
@@ -105,8 +122,15 @@
         'December'
       ]
 
-      return months.map(month => `${month} ${year}`)
-    }
+      return months.map(month => `${month} ${selectedYear.value}`)
+    });
+
+    watch(
+      () => selectedYear.value,
+      () => {
+        updateChart()
+      }
+    )
 
     onMounted(async () => {
       const token = cookie.get('token');
@@ -120,19 +144,18 @@
         })
 
         meData.value = response.data
-        const year = 2025
-        const allMonths = generateAllMonths(year)
-        const monthlyMap = {} as Record<string, number>
+        if (meData.value?.monthlySales) {
+          const years = meData.value.monthlySales.map(item => {
+            const [_, yearStr] = item.month.split(' ')
+            return parseInt(yearStr)
+          }).filter(Boolean)
+        
+          if (years.length > 0) {
+            selectedYear.value = Math.max(...years)
+          }
 
-        if (meData.value?.monthlySales && Array.isArray(meData.value.monthlySales)) {
-          meData.value.monthlySales.forEach((item) => {
-            monthlyMap[item.month] = item.monthTotal
-          })
+          updateChart();
         }
-
-        const data = allMonths.map((month) => monthlyMap[month] || 0)
-        chartData.value.labels = allMonths
-        chartData.value.datasets[0].data = data
 
         const transactionDataTotal = meData.value?.transactionTotal ?? 0;
         const reviewDataCount = meData.value?.reviewCount ?? 0;
@@ -280,6 +303,17 @@
                 <p class="lg:text-[18px] text-primary text-[20px] font-poppins_regular">{{ RupiahFormat(transactionTotalBefore || 0) }}</p>
             </div>
             <div class=" overflow-y-scroll no-scrollbar">
+                <div class="flex justify-start items-center mt-2 gap-2">
+                  <label class="text-[14px] font-poppins_medium" for="">Year : </label>
+                  <select class="text-[14px] border-1 outline-0 border-black rounded-md py-1 px-2 cursor-pointer" v-model="selectedYear">
+                    <option selected value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                  </select>
+                </div>
                 <div v-if="meData?.monthlySales.length" class="mt-6 h-[500px] lg:w-full w-[800px]">
                   <Line :key="chartKey" :data="chartData" :options="chartOptions" />
                 </div>

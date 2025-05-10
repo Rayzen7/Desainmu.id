@@ -28,12 +28,27 @@ export default class TransactionsController {
     })
   }
 
-  async indexAdmin({ response, auth }: HttpContext) {
-    const user = await auth.authenticate()
-    const product = await Product.query().where('created_by', user.id)
-    const productIds = product.map((products) => products.id)
+  async indexAdmin({ request, response, auth }: HttpContext) {
+    const { sort = 'DESC', order = 'created_at' } = request.qs()
+    const validSorts = ['ASC', 'DESC']
+    const sortDirection = validSorts.includes(sort.toUpperCase()) ? sort.toUpperCase() : 'DESC'
 
-    const transaction = await Transaction.query().whereIn('product_id', productIds)
+    const allowedOrders = ['id', 'name', 'created_at', 'updated_at', 'total', 'status']
+    const orderByColumn = allowedOrders.includes(order.toLowerCase())
+      ? order.toLowerCase()
+      : 'created_at'
+
+    const user = await auth.authenticate()
+
+    const product = await Product.query().where('created_by', user.id)
+    const productIds = product.map((p) => p.id)
+
+    const transaction = await Transaction.query()
+      .whereIn('product_id', productIds)
+      .orderBy(orderByColumn, sortDirection)
+      .preload('user')
+      .preload('product')
+
     return response.status(200).json({
       transaction: transaction,
     })
