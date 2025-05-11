@@ -144,7 +144,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === dashboardPath ? 'text-primary' : 'text-white'">Dashboard</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === dashboardPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === dashboardPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/admin/product">
@@ -162,7 +162,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === productList ? 'text-primary' : 'text-white'">Product List</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === productList ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === productList" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/admin/chat">
@@ -173,7 +173,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === chatPath ? 'text-primary' : 'text-white'">Chat</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === chatPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === chatPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/admin/order">
@@ -184,7 +184,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === orderPath ? 'text-primary' : 'text-white'">Order List</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === orderPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === orderPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/admin/profile">
@@ -196,7 +196,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === profilePath ? 'text-primary' : 'text-white'">Profile</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === profilePath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === profilePath" alt=""/>
                     </div>
                 </nuxt-link>
             </div>

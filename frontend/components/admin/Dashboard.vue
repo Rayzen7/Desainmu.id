@@ -317,8 +317,8 @@
                 <div v-if="meData?.monthlySales.length" class="mt-6 h-[500px] lg:w-full w-[800px]">
                   <Line :key="chartKey" :data="chartData" :options="chartOptions" />
                 </div>
-                <div class="" v-else>
-                  <p class="text-gray font-poppins_medium text-[16px]">Data not Found</p>
+                <div class="mt-8" v-else>
+                  <p class="text-gray font-poppins_medium text-[24px]">Data not Found</p>
                 </div>
             </div>
         </div>

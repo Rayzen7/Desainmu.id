@@ -105,13 +105,9 @@ export default class TransactionsController {
   async update({ params, request, response }: HttpContext) {
     try {
       const transaction = await Transaction.findOrFail(params.id)
-      const validateData = await request.validateUsing(transactionValidate, {
-        messagesProvider,
-      })
-
       transaction.merge({
-        status: validateData.status,
-        delivered_status_1: request.input('delivered_status_2'),
+        status: request.input('status'),
+        delivered_status_1: request.input('delivered_status_1'),
         delivered_status_2: request.input('delivered_status_2'),
         delivered_status_3: request.input('delivered_status_3'),
         delivered_status_4: request.input('delivered_status_4'),
@@ -124,6 +120,7 @@ export default class TransactionsController {
     } catch (error) {
       return response.status(422).json({
         message: 'Update transaction failed',
+        error: error,
       })
     }
   }

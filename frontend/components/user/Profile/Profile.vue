@@ -147,7 +147,7 @@
         </div>
         <div class="lg:mt-14 mt-12 lg:flex-row flex-col flex items-start gap-12 ml-0 lg:ml-4">
             <div class="relative">
-                <img :src="userData?.image === null ? guest : `http://localhost:3333/account/${userData?.image}`" class="w-[90px] border-2 border-primary rounded-full h-auto" alt=""/>
+                <img :src="userData?.image === null ? guest : `http://localhost:3333/account/${userData?.image}`" :class="selectedImage ? 'opacity-65' : 'opacity-100'" class="w-[90px] border-2 border-primary rounded-full h-auto" alt=""/>
                 <label for="imageProfile">
                     <img :src="change" alt="" class="w-[20px] absolute right-0 bottom-1 cursor-pointer" />
                 </label>

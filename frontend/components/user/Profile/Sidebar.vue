@@ -146,7 +146,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === profilePath ? 'text-primary' : 'text-white'">Profile</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === profilePath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === profilePath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/user/packed">
@@ -157,7 +157,7 @@
                             </svg>
                         </div>
                         <p class="font-poppins_semibold text-[14px]" :class="path === packedPath ? 'text-primary' : 'text-white'">Packed</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === packedPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === packedPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/user/shipped">
@@ -168,7 +168,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === shippedPath ? 'text-primary' : 'text-white'">Shipped</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === shippedPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === shippedPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/user/arrived">
@@ -177,7 +177,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-[26px] h-auto" :class="path === arrivedPath ? 'fill-primary' : 'fill-white'" viewBox="0 0 24 24"><path d="M22 8a.76.76 0 0 0 0-.21v-.08a.77.77 0 0 0-.07-.16.35.35 0 0 0-.05-.08l-.1-.13-.08-.06-.12-.09-9-5a1 1 0 0 0-1 0l-9 5-.09.07-.11.08a.41.41 0 0 0-.07.11.39.39 0 0 0-.08.1.59.59 0 0 0-.06.14.3.3 0 0 0 0 .1A.76.76 0 0 0 2 8v8a1 1 0 0 0 .52.87l9 5a.75.75 0 0 0 .13.06h.1a1.06 1.06 0 0 0 .5 0h.1l.14-.06 9-5A1 1 0 0 0 22 16V8zm-10 3.87L5.06 8l2.76-1.52 6.83 3.9zm0-7.72L18.94 8 16.7 9.25 9.87 5.34zM4 9.7l7 3.92v5.68l-7-3.89zm9 9.6v-5.68l3-1.68V15l2-1v-3.18l2-1.11v5.7z"/></svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === arrivedPath ? 'text-primary' : 'text-white'">Arrived</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === arrivedPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === arrivedPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/user/chat">
@@ -188,7 +188,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === chatPath ? 'text-primary' : 'text-white'">Chat</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === chatPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === chatPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/user/cancel">
@@ -207,7 +207,7 @@
                             </svg>
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === cancelPath ? 'text-primary' : 'text-white'">Canceled</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" :class="path === cancelPath ? 'block' : 'hidden'" alt=""/>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === cancelPath" alt=""/>
                     </div>
                 </nuxt-link>
             </div>

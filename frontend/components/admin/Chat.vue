@@ -319,8 +319,8 @@
                                         <p class="text-[12px] font-poppins_regular text-gray">
                                             {{
                                               user.chat.length > 0
-                                                ? (user.chat[user.chat.length - 1].message.length > 25
-                                                    ? user.chat[user.chat.length - 1].message.slice(0, 25) + '...'
+                                                ? (user.chat[user.chat.length - 1].message.length > 20
+                                                    ? user.chat[user.chat.length - 1].message.slice(0, 20) + '...'
                                                     : user.chat[user.chat.length - 1].message)
                                                 : ''
                                             }}

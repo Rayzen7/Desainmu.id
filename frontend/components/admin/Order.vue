@@ -3,7 +3,8 @@
     import { onMounted, watch, ref } from 'vue';
     import RupiahFormat from '~/utils/RupiahFormat';
     import { API } from '#imports';
-    import { useRoute, useRouter } from 'vue-router';
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
 
     interface transactionDataProp {
         id: number,
@@ -26,13 +27,13 @@
     }
 
     const transactionData = ref<transactionDataProp[]>([]);
-    const route = useRoute();
     const sortBy = ref('');
     const orderBy = ref('');
     const token = cookie.get('token');
-    const navigate = useRouter();
+    const status = ref('');
 
     onMounted(() => {
+        AOS.init();
         const fetchTransaction = async() => {
             try {
                 const response = await API.get(`/admin/transaction?sort=${sortBy.value}&order=${orderBy.value}`, {
@@ -66,15 +67,11 @@
         );
 
         fetchTransaction();
-    });
-
-    const handleUpdate = (id: number) => {
-        navigate.push(`/admin/order?id=${id}`);
-    }
+    });    
 </script>
 
 <template>
-    <section>
+    <section data-aos="fade-up" data-aos-duration="900">
         <div class="flex justify-start lg:gap-0 gap-6 lg:justify-between items-center">
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">Order List</h1>
         </div>
@@ -126,7 +123,9 @@
                 <td :class="index % 2 === 0 ? 'bg-white' : 'bg-gray-100'" class="py-5 min-w-[240px] px-4 border-b border-gray-300 text-[13px] text-gray-700">{{ transaction.quantity }} Product</td>
                 <td :class="index % 2 === 0 ? 'bg-white' : 'bg-gray-100'" class="py-5 min-w-[240px] px-4 border-b border-gray-300 text-[13px] text-gray-700">{{ RupiahFormat(transaction.total) }}</td>
                 <td :class="index % 2 === 0 ? 'bg-white' : 'bg-gray-100'" class="py-5 min-w-[240px] align-middle px-4 border-b border-gray-300 text-[13px] text-gray-700">
-                    <button @click="handleUpdate(transaction.id)" class="bg-primary text-white rounded-md px-4 py-2 cursor-pointer">Update</button>
+                    <nuxt-link :to="`/admin/order/edit/${transaction.id}`">
+                        <button class="bg-primary text-white rounded-md px-4 py-2 cursor-pointer">Update</button>
+                    </nuxt-link>
                 </td>
               </tr>
               <tr v-else>

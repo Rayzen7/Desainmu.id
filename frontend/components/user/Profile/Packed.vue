@@ -48,7 +48,7 @@
         <h1 class="text-[26px] lg:text-[30px] font-poppins_semibold">Packed</h1>
         <div class="mt-8 flex flex-col gap-8" v-if="transactionData.length > 0">
             <div class="" v-for="(transaction, index) in transactionData" :key="index">
-                <div class="border-2 flex lg:flex-row flex-col justify-between p-5 w-full lg:w-[90%] border-primary rounded-xl" data-aos="fade-up" data-aos-duration="900">
+                <div class="border-2 bg-white flex lg:flex-row flex-col justify-between p-5 w-full lg:w-[90%] border-primary rounded-xl" data-aos="fade-up" data-aos-duration="900">
                     <div class="flex lg:flex-row flex-col justify-start items-center gap-2">
                         <img class="lg:w-[110px] w-[120px] h-auto" :src="`http://localhost:3333/image/${transaction.product.image}`" alt=""/>
                         <div class="flex flex-col w-full lg:gap-1 gap-2">

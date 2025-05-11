@@ -104,7 +104,7 @@
             </nuxt-link>
         </div>
         <div class="lg:mt-8 mt-14 flex justify-center lg:justify-start flex-wrap items-center lg:gap-8 gap-4">
-            <div class="" v-for="(product, index) in meData" :key="index">
+            <div class="" v-if="meData.length > 0" v-for="(product, index) in meData" :key="index">
                 <div class="bg-white h-auto w-[140px] lg:w-[220px] p-4 rounded-lg">
                     <img class="w-full rounded-md mx-auto h-auto" :src="`http://localhost:3333/image/${product.image}`" alt=""/>
                     <div class="mt-3 flex flex-col gap-1">
@@ -121,6 +121,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="mt-2" v-else>
+                <p class="text-gray font-poppins_medium text-[24px]">Data not Found</p>
             </div>
         </div>
     </section>
