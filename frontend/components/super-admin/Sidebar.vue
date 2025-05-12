@@ -29,10 +29,10 @@
     const route = useRoute();
     const path = route.path;
     const dashboardPath = '/super';
-    const productList = '/admin/product';
-    const chatPath = '/admin/chat';
+    const productList = '/super/product';
+    const chatPath = '/super/chat';
     const orderPath = '/admin/order';
-    const profilePath = '/admin/profile';
+    const profilePath = '/super/profile';
     const isClose = ref(true);
     const checkScreenSize = () => {
       const isMobile = window.matchMedia('(max-width: 768px)').matches
@@ -147,7 +147,7 @@
                         <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === dashboardPath" alt=""/>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/admin/product">
+                <nuxt-link to="/super/product">
                     <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === productList ? 'bg-white' : 'bg-transparent'">
                         <div class="">
                             <svg class="w-[24px] h-auto" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,7 +165,7 @@
                         <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === productList" alt=""/>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/admin/chat">
+                <nuxt-link to="/super/chat">
                     <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === chatPath ? 'bg-white' : 'bg-transparent'">
                         <div class="">
                             <svg class="w-[24px] h-auto" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +187,7 @@
                         <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === orderPath" alt=""/>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/admin/profile">
+                <nuxt-link to="/super/profile">
                     <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === profilePath ? 'bg-white' : 'bg-transparent'">
                         <div class="">
                             <svg class="w-[20px] h-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
