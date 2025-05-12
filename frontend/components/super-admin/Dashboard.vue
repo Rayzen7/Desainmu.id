@@ -27,6 +27,7 @@
     const statusValue = ref('');
 
     onMounted(() => {
+        AOS.init();
         const fetchUser = async() => {
             try {
                 const response = await API.get('/super/getuser', {
@@ -177,7 +178,7 @@
 </script>
 
 <template>
-    <section>
+    <section data-aos="fade-up" data-aos-duration="900">
         <div class="flex justify-start lg:gap-0 gap-6 lg:justify-between items-center">
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">User List</h1>
         </div>

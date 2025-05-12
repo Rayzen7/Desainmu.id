@@ -31,7 +31,7 @@
     const dashboardPath = '/super';
     const productList = '/super/product';
     const chatPath = '/super/chat';
-    const orderPath = '/admin/order';
+    const feedbackPath = '/super/feedback';
     const profilePath = '/super/profile';
     const isClose = ref(true);
     const checkScreenSize = () => {
@@ -176,15 +176,13 @@
                         <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === chatPath" alt=""/>
                     </div>
                 </nuxt-link>
-                <nuxt-link to="/admin/order">
-                    <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === orderPath ? 'bg-white' : 'bg-transparent'">
+                <nuxt-link to="/super/feedback">
+                    <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === feedbackPath ? 'bg-white' : 'bg-transparent'">
                         <div class="">
-                            <svg class="w-[24px] h-auto" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path :class="path === orderPath ? 'fill-primary' : 'fill-white'" d="M5.04688 0.359375L6.07812 1.39062L3.32812 4.14062L2.8125 4.57031L2.29688 4.14062L0.921875 2.76562L1.95312 1.73438L2.8125 2.63672L5.04688 0.359375ZM8.3125 1.5625H17.25V2.9375H8.3125V1.5625ZM5.04688 5.85938L6.07812 6.89062L3.32812 9.64062L2.8125 10.0703L2.29688 9.64062L0.921875 8.26562L1.95312 7.23438L2.8125 8.13672L5.04688 5.85938ZM8.3125 7.0625H17.25V8.4375H8.3125V7.0625ZM5.04688 11.3594L6.07812 12.3906L3.32812 15.1406L2.8125 15.5703L2.29688 15.1406L0.921875 13.7656L1.95312 12.7344L2.8125 13.6367L5.04688 11.3594ZM8.3125 12.5625H17.25V13.9375H8.3125V12.5625Z"/>
-                            </svg>
+                            <svg :class="path === feedbackPath ? 'fill-primary' : 'fill-white'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 2H4c-1.103 0-2 .894-2 1.992v12.017C2 17.106 2.897 18 4 18h3v4l6.351-4H20c1.103 0 2-.894 2-1.992V3.992A1.998 1.998 0 0 0 20 2zm-9 8a2 2 0 1 1-2-2c.086 0 .167.015.25.025.082-.014.164-.025.25-.025A1.5 1.5 0 0 1 11 9.5c0 .086-.012.168-.025.25.01.083.025.165.025.25zm4 2a2 2 0 0 1-2-2c0-.086.015-.167.025-.25A1.592 1.592 0 0 1 13 9.5 1.5 1.5 0 0 1 14.5 8c.086 0 .168.011.25.025.083-.01.164-.025.25-.025a2 2 0 0 1 0 4z"/></svg> 
                         </div>
-                        <p class=" font-poppins_semibold text-[14px]" :class="path === orderPath ? 'text-primary' : 'text-white'">Order List</p>
-                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === orderPath" alt=""/>
+                        <p class=" font-poppins_semibold text-[14px]" :class="path === feedbackPath ? 'text-primary' : 'text-white'">Feedback</p>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === feedbackPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/super/profile">

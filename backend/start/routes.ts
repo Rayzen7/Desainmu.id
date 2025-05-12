@@ -83,6 +83,9 @@ router.group(() => {
         // Feedback
         router.get('/feedback', [FeedbacksController, 'index'])
 
+        // Product
+        router.get('/product', [ProductsController, 'index'])
+
         // Category
         router.resource('/category', CategoriesController)
     }).prefix('/super').use(middleware.role(1))

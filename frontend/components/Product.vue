@@ -50,7 +50,6 @@
         }
     }
 
-
     const fetchCategory = async() => {
         try {
             const response = await API.get('/category/product');
@@ -114,7 +113,7 @@
                         <hr class="lg:w-[200px] w-[120px] mt-2 lg:mt-3 h-[2px] border-none outline-none bg-black"/>
                     </div>
                     <label class="border-2 flex justify-center gap-2 border-black p-2 rounded-md">
-                        <p class="lg:text-[14px] responsive text-[12px] font-poppins_medium">Category</p>
+                        <p class="lg:text-[14px] responsive text-[12px] font-poppins_medium">Category : </p>
                         <select v-model="selectedValue" class="outline-none cursor-pointer border-none text-[12px] lg:text-[14px] font-poppins_regular">
                             <option value="" selected>All Category</option>
                             <option :value="category.name" v-for="(category, index) in categoryData" :key="index">{{ `${index + 1} | ${category.name}` }}</option>
