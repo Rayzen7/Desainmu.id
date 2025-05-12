@@ -7,6 +7,7 @@
     import Swal from 'sweetalert2';
     import AOS from 'aos';
     import 'aos/dist/aos.css';
+    import { Path } from '~/utils/Path';
 
     interface productDataProp {
         id: number,
@@ -57,7 +58,7 @@
 
                 const getById = response.data.product;
                 productPostData.value.name = getById.name;
-                previewImage.value = `http://localhost:3333/image/${getById.image}`; 
+                previewImage.value = `${Path}/image/${getById.image}`; 
                 productPostData.value.quantity = getById.quantity;
                 productPostData.value.price = getById.price;
                 productPostData.value.category = getById.categoryId;

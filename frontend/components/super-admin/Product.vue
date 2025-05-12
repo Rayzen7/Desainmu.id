@@ -8,6 +8,7 @@
     import 'aos/dist/aos.css';
     import right from '~/public/icon/right.svg'
     import left from '~/public/icon/left.svg'
+    import { Path } from '~/utils/Path';
     
     interface productDataProp {
         name: string,
@@ -89,7 +90,7 @@
         <div class="lg:mt-8 mt-14 flex justify-center lg:justify-start flex-wrap items-center lg:gap-8 gap-4">
             <div class="" v-if="productData.length > 0" v-for="(product, index) in productData" :key="index">
                 <div class="bg-white h-auto w-[140px] lg:w-[220px] p-4 rounded-lg">
-                    <img class="w-full rounded-md mx-auto h-auto" :src="`http://localhost:3333/image/${product.image}`" alt=""/>
+                    <img class="w-full rounded-md mx-auto h-auto" :src="`${Path}/image/${product.image}`" alt=""/>
                     <div class="mt-3 flex flex-col gap-1">
                         <h1 class="lg:text-[16px] text-[14px] text-primary font-poppins_medium">{{ product.name.length > 12 ? product.name.slice(0, 12) + '...' : product.name }}</h1>
                         <p class="lg:text-[14px] text-[10px] font-poppins_regular">{{ product.category.name }}</p>

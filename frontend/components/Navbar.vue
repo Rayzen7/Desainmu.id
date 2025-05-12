@@ -13,6 +13,7 @@
     import { toast } from 'vue3-toastify';
     import Swal from 'sweetalert2';
     import chat from '~/public/icon/chat.svg';
+    import { Path } from '~/utils/Path';
 
     const authNavbarValue = ref(false);
     const userProfile = ref(false);
@@ -122,7 +123,7 @@
                     <div v-for="(products, index) in productValue" :key="index">
                         <nuxt-link :to="`/user/product/${products.id}`">
                             <div class="flex justify-start cursor-pointer items-center gap-2">
-                                <img :src="`http://localhost:3333/image/${products.image}`" class="lg:w-[50px] w-[35px] h-auto" alt=""/>
+                                <img :src="`${Path}/image/${products.image}`" class="lg:w-[50px] w-[35px] h-auto" alt=""/>
                                 <div class="font-poppins_regular">
                                     <h1 class="lg:text-[16px] text-[12px] font-poppins_medium">{{ products.name }}</h1>
                                     <p class="lg:text-[14px] text-[10px] text-gray">{{ products.category.name }}</p>

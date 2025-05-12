@@ -7,6 +7,7 @@
     import { productService, testimonial } from '~/data/ProductData';
     import right from '~/public/icon/right.svg'
     import left from '~/public/icon/left.svg'
+    import { Path } from '~/utils/Path';
 
     interface productDataProp {
         id: number,
@@ -124,7 +125,7 @@
                     <div class="" v-if="productData.length > 0" v-for="(product, index) in productData" :key="index">
                         <nuxt-link :to="`/user/product/${product.id}`">
                             <div class="flex lg:flex-row flex-col relative cursor-pointer lg:px-2 p-4 justify-start items-center border-2 border-primary w-[150px] lg:w-[275px] min-h-[230px] lg:min-h-[130px] rounded-xl">
-                                <img :src="`http://localhost:3333/image/${product.image}`" alt="" class="w-[80px] h-auto"/>
+                                <img :src="`${Path}/image/${product.image}`" alt="" class="w-[80px] h-auto"/>
                                 <div class="flex flex-col gap-1 lg:mt-0 mt-3">
                                     <h1 class="lg:text-[15px] text-[14px] text-start font-poppins_medium">{{ product.name }}</h1>   
                                     <p class="text-[12px] text-start text-gray font-poppins_regular">{{ product.category.name }}</p>

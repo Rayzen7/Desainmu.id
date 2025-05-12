@@ -11,6 +11,7 @@
     import Swal from 'sweetalert2';
     import { API } from '#imports';
     import list from '~/public/icon/list.svg';
+    import { Path } from '~/utils/Path';
 
     interface meDataProp {
         username: string,
@@ -128,7 +129,7 @@
         <div class="relative z-20 py-14 lg:py-10 flex flex-col justify-between h-screen">
             <nuxt-link to="/super">
                 <div class="flex justify-start lg:ml-0 ml-8 lg:justify-center items-center gap-5 lg:gap-3 px-2">
-                    <img :class="meData?.image == null ? 'lg:w-[40px] w-[50px]' : 'lg:w-[50px] w-[60px]'" :src="meData?.image == null ? guest : `http://localhost:3333/account/${meData?.image}`" class="h-auto rounded-full" alt=""/>
+                    <img :class="meData?.image == null ? 'lg:w-[40px] w-[50px]' : 'lg:w-[50px] w-[60px]'" :src="meData?.image == null ? guest : `${Path}/account/${meData?.image}`" class="h-auto rounded-full" alt=""/>
                     <div class="">
                         <h1 class="lg:text-[16px] text-[20px] font-poppins_medium">{{ meData?.username }}</h1>
                         <p class="text-[14px] lg:pt-0 pt-1 font-poppins_regular">{{ meData?.email.slice(0, 13) + '...' }}</p>

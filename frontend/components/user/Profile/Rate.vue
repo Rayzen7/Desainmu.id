@@ -7,6 +7,7 @@
     import 'aos/dist/aos.css';
     import Swal from 'sweetalert2';
     import { useRoute, useRouter } from 'vue-router';
+    import { Path } from '~/utils/Path';
 
     interface transactionDataProp {
         id: number,
@@ -119,7 +120,7 @@
             <div class="">
                 <div class="border-2 flex lg:flex-row flex-col justify-between p-5 w-full lg:w-[90%] border-primary rounded-xl" data-aos="fade-up" data-aos-duration="900">
                     <div class="flex lg:flex-row flex-col justify-start items-center gap-2">
-                        <img class="lg:w-[110px] w-[120px] h-auto" :src="`http://localhost:3333/image/${transactionData?.product.image}`" alt=""/>
+                        <img class="lg:w-[110px] w-[120px] h-auto" :src="`${Path}/image/${transactionData?.product.image}`" alt=""/>
                         <div class="flex flex-col w-full lg:gap-1 gap-2">
                             <h1 class="text-[18px] font-poppins_medium">{{ transactionData?.product.name }}</h1>
                             <p class="text-[14px] text-gray font-poppins_regular">{{ transactionData?.product.category.name }}</p>

@@ -11,6 +11,7 @@
     import AOS from 'aos';
     import 'aos/dist/aos.css';
     import Swal from 'sweetalert2';
+    import { Path } from '~/utils/Path';
 
     interface chatProp {
         id: number,
@@ -312,7 +313,7 @@
                     <div class="flex mt-3 flex-col gap-6 overflow-hidden" v-for="(user, index) in allUserData" v-if="allUserData.length > 0" :key="index">                        
                         <nuxt-link :to="`/admin/chat?user=${user.sender_user.id}&room=${user.id}`">
                             <div class="flex justify-start gap-3 items-center cursor-pointer shrink-0" @click="handleOpen">
-                                <img :class="user.sender_user.image === null ? 'w-[32px] h-[32px]' : 'w-[38px] h-[38px]'" class="rounded-full " :src="user.sender_user.image === null ? guest : `http://localhost:3333/account/${user.sender_user.image}`" alt=""/>
+                                <img :class="user.sender_user.image === null ? 'w-[32px] h-[32px]' : 'w-[38px] h-[38px]'" class="rounded-full " :src="user.sender_user.image === null ? guest : `${Path}/account/${user.sender_user.image}`" alt=""/>
                                 <div class="flex justify-between w-full items-start">
                                     <div>
                                         <h1 class="text-[14px] text-primary font-poppins_medium">{{ user.sender_user.username }}</h1>
@@ -353,9 +354,9 @@
                     <div class="px-7 mt-12 lg:mt-6" v-for="(chat, index) in chatData" :key="index">
                         <div class="flex w-full" :class="chat.sender === userId ? 'justify-start' : 'justify-end'">
                             <div class="flex items-end gap-3" :class="chat.sender === userId ? 'flex-row' : 'flex-row-reverse'">
-                                <img class="w-[40px] translate-y-4 h-auto rounded-full" :src="chat.sender_user.image === null ? guest : `http://localhost:3333/account/${chat.sender_user.image}`" alt=""/>
+                                <img class="w-[40px] translate-y-4 h-auto rounded-full" :src="chat.sender_user.image === null ? guest : `${Path}/account/${chat.sender_user.image}`" alt=""/>
                                 <div class="" :class="chat.sender === userId ? 'bg-[#F5F5F5] p-4 rounded-t-md rounded-r-md' : 'bg-primary p-4 text-white rounded-t-md rounded-l-md'">
-                                    <img @click="openImage(`http://localhost:3333/${chat.image}`)" :src="`http://localhost:3333/${chat.image}`" class="w-[200px] h-auto cursor-pointer rounded-lg" :class="chat.image === null ? 'hidden mb-0' : 'mb-3 block'" alt=""/>
+                                    <img @click="openImage(`${Path}/${chat.image}`)" :src="`${Path}/${chat.image}`" class="w-[200px] h-auto cursor-pointer rounded-lg" :class="chat.image === null ? 'hidden mb-0' : 'mb-3 block'" alt=""/>
                                     <p class="text-[13px] max-w-[200px] font-poppins_regular">{{ chat.message }}</p>
                                     <div class="flex mt-2 items-center gap-2" :class="chat.sender === userId ? 'flex-row-reverse justify-end' : 'flex-row justify-end'">
                                         <p class="text-[10px] font-poppins_regular">{{ new Date(chat.updatedAt).getHours().toString().padStart(2, '0') }}:{{ new Date(chat.updatedAt).getMinutes().toString().padStart(2, '0') }}</p>

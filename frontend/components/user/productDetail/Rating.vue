@@ -8,6 +8,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import Swal from 'sweetalert2';
     import menu from '~/public/icon/kebab.svg';
+    import { Path } from '~/utils/Path';
 
     interface commentDataProp {
         id: number,
@@ -200,7 +201,7 @@
                 <div class="">
                     <div class="mx-8 my-8 flex justify-between items-start">
                         <div class="flex lg:flex-row flex-col items-start gap-6">
-                            <img :src="comment.user.image === null ? `${guest}` : `http://localhost:3333/account/${comment.user.image}`" class="lg:w-[50px] w-[30px] rounded-full h-auto" alt=""/>
+                            <img :src="comment.user.image === null ? `${guest}` : `${Path}/account/${comment.user.image}`" class="lg:w-[50px] w-[30px] rounded-full h-auto" alt=""/>
                             <div class="flex flex-col gap-2">
                                 <h1 class="text-[18px] font-poppins_medium">{{ comment.user.username }}</h1>
                                 <img class="lg:w-[100px] w-[80px] h-auto" :src="stars" alt=""/>
