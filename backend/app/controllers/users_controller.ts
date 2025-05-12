@@ -6,15 +6,8 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 export default class UsersController {
-  async user({ response }: HttpContext) {
-    const user = await User.query().preload('role').where('role_id', 3)
-    return response.status(200).json({
-      user: user,
-    })
-  }
-
-  async admin({ response }: HttpContext) {
-    const user = await User.query().preload('role').where('role_id', 2)
+  async index({ response }: HttpContext) {
+    const user = await User.query().preload('role')
     return response.status(200).json({
       user: user,
     })
@@ -63,6 +56,25 @@ export default class UsersController {
       return response.status(422).json({
         message: 'Update user failed',
         errors: error.messages,
+      })
+    }
+  }
+
+  async updateStatus({ request, response, params }: HttpContext) {
+    try {
+      const user = await User.findOrFail(params.id)
+      user.merge({
+        role_id: request.input('role_id'),
+      })
+
+      await user.save()
+      return response.status(200).json({
+        message: 'Update user status success',
+      })
+    } catch (error) {
+      return response.status(422).json({
+        message: 'Update user status failed',
+        error: error,
       })
     }
   }

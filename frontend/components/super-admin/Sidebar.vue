@@ -28,7 +28,7 @@
     const navigate = useRouter();
     const route = useRoute();
     const path = route.path;
-    const dashboardPath = '/admin';
+    const dashboardPath = '/super';
     const productList = '/admin/product';
     const chatPath = '/admin/chat';
     const orderPath = '/admin/order';
@@ -126,7 +126,7 @@
             <img class="w-[160px] h-auto" :src="particle3" alt=""/>
         </div>
         <div class="relative z-20 py-14 lg:py-10 flex flex-col justify-between h-screen">
-            <nuxt-link to="/admin">
+            <nuxt-link to="/super">
                 <div class="flex justify-start lg:ml-0 ml-8 lg:justify-center items-center gap-5 lg:gap-3 px-2">
                     <img :class="meData?.image == null ? 'lg:w-[40px] w-[50px]' : 'lg:w-[50px] w-[60px]'" :src="meData?.image == null ? guest : `http://localhost:3333/account/${meData?.image}`" class="h-auto rounded-full" alt=""/>
                     <div class="">
@@ -136,7 +136,7 @@
                 </div>
             </nuxt-link>
             <div class="flex flex-col gap-2 ml-8">
-                <nuxt-link to="/admin">
+                <nuxt-link to="/super">
                     <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === dashboardPath ? 'bg-white' : 'bg-transparent'">
                         <div class="">
                             <svg class="w-[24px] h-auto" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

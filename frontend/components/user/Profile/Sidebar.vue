@@ -132,7 +132,7 @@
                     <img :class="meData?.image == null ? 'lg:w-[40px] w-[50px]' : 'lg:w-[50px] w-[60px]'" :src="meData?.image == null ? guest : `http://localhost:3333/account/${meData?.image}`" class="h-auto rounded-full" alt=""/>
                     <div class="">
                         <h1 class="lg:text-[16px] text-[20px] font-poppins_medium">{{ meData?.username }}</h1>
-                        <p class="text-[14px] lg:pt-0 pt-1 font-poppins_regular">{{ meData?.email }}</p>
+                        <p class="text-[14px] lg:pt-0 pt-1 font-poppins_regular">{{ meData?.email.slice(0, 13) + '...' }}</p>
                     </div>
                 </div>
             </nuxt-link>

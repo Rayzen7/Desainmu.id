@@ -76,10 +76,9 @@ router.group(() => {
     // Super Admin
     router.group(() => {
         // User
-        router.get('/getuser', [UsersController, 'user'])
-        router.get('/getadmin', [UsersController, 'admin'])
-        router.get('/getuser/:id', [UsersController, 'show'])
+        router.get('/getuser', [UsersController, 'index'])
         router.delete('/getuser/:id', [UsersController, 'destroy'])
+        router.put('/getuser/:id', [UsersController, 'updateStatus'])
 
         // Feedback
         router.get('/feedback', [FeedbacksController, 'index'])

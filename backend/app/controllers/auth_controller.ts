@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { registerValidate, messagesProvider, loginValidate } from '#validators/post_validate'
 import User from '#models/user'
+import RoomChat from '#models/room_chat'
 
 export default class AuthController {
   async register({ request, response }: HttpContext) {
@@ -9,11 +10,16 @@ export default class AuthController {
         messagesProvider,
       })
 
-      await User.create({
+      const user = await User.create({
         username: validateData.username,
         password: validateData.password,
         email: validateData.email,
         role_id: validateData.role_id,
+      })
+
+      await RoomChat.create({
+        sender: user.id,
+        receiver: 1,
       })
 
       return response.status(200).json({
