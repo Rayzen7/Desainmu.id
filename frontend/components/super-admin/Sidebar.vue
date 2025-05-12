@@ -34,6 +34,7 @@
     const chatPath = '/super/chat';
     const feedbackPath = '/super/feedback';
     const profilePath = '/super/profile';
+    const categoryPath = '/super/category';
     const isClose = ref(true);
     const checkScreenSize = () => {
       const isMobile = window.matchMedia('(max-width: 768px)').matches
@@ -175,6 +176,15 @@
                         </div>
                         <p class=" font-poppins_semibold text-[14px]" :class="path === chatPath ? 'text-primary' : 'text-white'">Chat</p>
                         <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === chatPath" alt=""/>
+                    </div>
+                </nuxt-link>
+                <nuxt-link to="/super/category">
+                    <div class="flex justify-start cursor-pointer items-center pl-6 p-4 py-4 rounded-l-full gap-4" :class="path === categoryPath ? 'bg-white' : 'bg-transparent'">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" :class="path === categoryPath ? 'fill-primary stroke-white' : 'fill-white stroke-primary'" class="w-[24px] h-auto" viewBox="0 0 24 24"><path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm13 0c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4z"/></svg>
+                        </div>
+                        <p class=" font-poppins_semibold text-[14px]" :class="path === categoryPath ? 'text-primary' : 'text-white'">Category</p>
+                        <img :src="clip" class="absolute image w-[27px] mt-[9px] translate-x-1 right-0 h-auto" v-if="path === categoryPath" alt=""/>
                     </div>
                 </nuxt-link>
                 <nuxt-link to="/super/feedback">
