@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 04 Bulan Mei 2025 pada 15.52
+-- Waktu pembuatan: 13 Bulan Mei 2025 pada 02.36
 -- Versi server: 8.0.30
 -- Versi PHP: 8.3.11
 
@@ -87,17 +87,6 @@ CREATE TABLE `auth_access_tokens` (
   `expires_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `auth_access_tokens`
---
-
-INSERT INTO `auth_access_tokens` (`id`, `tokenable_id`, `type`, `name`, `hash`, `abilities`, `created_at`, `updated_at`, `last_used_at`, `expires_at`) VALUES
-(69, 4, 'auth_token', NULL, '0b2666fba1a491d3a30d5fab527f6bebdcdc60434692c267e80a70da8ed2e22a', '[\"*\"]', '2025-05-04 04:42:31', '2025-05-04 04:42:31', '2025-05-04 08:51:16', NULL),
-(70, 2, 'auth_token', NULL, '0bd16c55402410d69ae5d0bfe740066fdad12b64574862a594f74684d16f9ae5', '[\"*\"]', '2025-05-04 04:44:56', '2025-05-04 04:44:56', '2025-05-04 04:45:07', NULL),
-(71, 11, 'auth_token', NULL, '832bf6758e8788f852588529d5b9bef2f6918ef660f9e1a1455e78ce637ed034', '[\"*\"]', '2025-05-04 04:47:24', '2025-05-04 04:47:24', '2025-05-04 04:47:35', NULL),
-(74, 11, 'auth_token', NULL, 'dca74395ed8c1de3caaaa4fa91c1769f13d8589db0b365e877f9639e73d220ae', '[\"*\"]', '2025-05-04 07:46:38', '2025-05-04 07:46:38', NULL, NULL),
-(75, 2, 'auth_token', NULL, 'a25340a1cf3af962a00fc5f2c21a5568be2a64e593cefaa4371386b1cdaf08de', '[\"*\"]', '2025-05-04 08:11:35', '2025-05-04 08:11:35', '2025-05-04 08:13:39', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -149,16 +138,19 @@ CREATE TABLE `chats` (
 --
 
 INSERT INTO `chats` (`id`, `sender`, `message`, `image`, `room_id`, `receiver`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Halo ini admin', NULL, 1, 2, '2025-05-04 06:51:13', '2025-05-04 06:51:13'),
 (2, 4, 'Halo ini admin2', NULL, 2, 11, '2025-05-04 14:11:10', '2025-05-04 14:11:10'),
-(3, 4, 'halo', NULL, 2, 11, '2025-05-04 07:41:01', '2025-05-04 07:41:01'),
-(4, 4, 'test', NULL, 1, 2, '2025-05-04 07:41:08', '2025-05-04 07:41:08'),
-(5, 2, 'test dari admin', NULL, 1, 4, '2025-05-04 07:43:08', '2025-05-04 07:43:08'),
-(7, 4, 'oke', NULL, 1, 2, '2025-05-04 07:44:15', '2025-05-04 07:44:15'),
-(10, 11, 'test dari admin2', NULL, 2, 4, '2025-05-04 07:45:43', '2025-05-04 07:45:43'),
-(13, 4, 'test', NULL, 1, 2, '2025-05-04 08:09:36', '2025-05-04 08:09:36'),
-(14, 4, '1', NULL, 1, 2, '2025-05-04 08:10:31', '2025-05-04 08:10:31'),
-(15, 2, 'ini bang', 'chat/dg4ykrjc5dwqum41l1d67ucc/kecap.jpg', 1, 4, '2025-05-04 08:13:39', '2025-05-04 08:13:39');
+(18, 4, 'Hai', NULL, 3, 2, '2025-05-04 10:05:51', '2025-05-04 10:05:51'),
+(19, 2, 'Hai apa ada yang ingin saya bantu?', NULL, 3, 4, '2025-05-04 10:06:38', '2025-05-04 10:06:38'),
+(20, 4, 'Bisa tolong buatin ini ga mas', NULL, 3, 2, '2025-05-04 10:08:28', '2025-05-04 10:08:28'),
+(21, 2, 'Apa mas?', NULL, 3, 4, '2025-05-04 10:08:38', '2025-05-04 10:08:38'),
+(23, 2, 'Tobat mas..', NULL, 3, 4, '2025-05-04 10:09:19', '2025-05-04 10:09:19'),
+(24, 4, 'hehee', NULL, 3, 2, '2025-05-04 20:42:13', '2025-05-04 20:42:13'),
+(39, 4, 'test lagi', 'chat/q7v86n0f6n7okw5sgjjwf6d3/Hutao-mywife (1) (1).jpg', 3, 2, '2025-05-05 23:46:27', '2025-05-05 23:46:27'),
+(40, 4, 'woy min', NULL, 3, 2, '2025-05-06 21:31:17', '2025-05-06 21:31:17'),
+(42, 2, 'hai', NULL, 3, 4, '2025-05-06 21:45:58', '2025-05-06 21:45:58'),
+(45, 2, 'halo', NULL, 3, 4, '2025-05-10 08:53:44', '2025-05-10 08:53:44'),
+(46, 11, 'Halo', NULL, 2, 4, '2025-05-10 19:20:16', '2025-05-10 19:20:16'),
+(47, 11, 'Apa ada hal yang ingin saya bantu', NULL, 2, 4, '2025-05-10 19:20:28', '2025-05-10 19:20:28');
 
 -- --------------------------------------------------------
 
@@ -180,9 +172,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `message`, `product_id`, `created_at`, `updated_at`) VALUES
-(2, 4, 'Totebag-nya keren banget, desain kucing hitamnya simpel tapi menarik! Bahannya juga tebal dan kuat, cocok buat dibawa kuliah atau jalan-jalan. Buat pecinta kucing, ini wajib punya!', 4, '2025-04-29 08:19:08', '2025-04-29 08:19:08'),
 (3, 9, 'Case-nya lucu banget dan sesuai dengan ekspektasi! Kualitas cetaknya tajam, warnanya juga gak pudar. Recommended banget buat yang mau custom case unik dan awet!', 6, '2025-04-29 09:14:33', '2025-04-29 09:14:33'),
-(4, 9, 'Totebag Black Cat ini benar-benar melebihi ekspektasi aku. Bahan tasnya tebal dan kuat, cocok banget dipakai buat bawa buku atau belanja ringan. Desainnya simpel tapi elegan, dengan gambar kucing hitam yang bikin kelihatan unik dan beda dari totebag biasa. Aku sering dapet pujian waktu bawa tas ini ke kampus atau nongkrong bareng teman. Buat pecinta kucing dan penggemar fashion minimalis, ini wajib banget punya!', 4, '2025-04-29 09:19:23', '2025-04-29 09:19:23');
+(4, 9, 'Totebag Black Cat ini benar-benar melebihi ekspektasi aku. Bahan tasnya tebal dan kuat, cocok banget dipakai buat bawa buku atau belanja ringan. Desainnya simpel tapi elegan, dengan gambar kucing hitam yang bikin kelihatan unik dan beda dari totebag biasa. Aku sering dapet pujian waktu bawa tas ini ke kampus atau nongkrong bareng teman. Buat pecinta kucing dan penggemar fashion minimalis, ini wajib banget punya!', 4, '2025-04-29 09:19:23', '2025-04-29 09:19:23'),
+(8, 4, 'Totebag-nya keren banget, desain kucing hitamnya simpel tapi menarik! Bahannya juga tebal dan kuat, cocok buat dibawa kuliah atau jalan-jalan. Buat pecinta kucing, ini wajib punya!', 4, '2025-05-05 20:20:44', '2025-05-05 20:20:44');
 
 -- --------------------------------------------------------
 
@@ -203,7 +195,10 @@ CREATE TABLE `feedbacks` (
 --
 
 INSERT INTO `feedbacks` (`id`, `name`, `comment`, `created_at`, `updated_at`) VALUES
-(2, 'Test Feedback', 'This is a test feedback', '2025-04-27 05:01:57', '2025-04-27 05:01:57');
+(2, 'Test Feedback', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat deleniti debitis doloribus dolores, delectus dolor aut soluta beatae eaque eius nisi quis cupiditate, earum vel? Nisi ipsa doloribus tempore ratione.', '2025-04-27 05:01:57', '2025-04-27 05:01:57'),
+(6, 'Test Feedback', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat deleniti debitis doloribus dolores, delectus dolor aut soluta beatae eaque eius nisi quis cupiditate, earum vel? Nisi ipsa doloribus tempore ratione.', '2025-04-27 05:01:57', '2025-04-27 05:01:57'),
+(7, 'Test Feedback', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat deleniti debitis doloribus dolores, delectus dolor aut soluta beatae eaque eius nisi quis cupiditate, earum vel? Nisi ipsa doloribus tempore ratione.', '2025-04-27 05:01:57', '2025-04-27 05:01:57'),
+(8, 'Test Feedback', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat deleniti debitis doloribus dolores, delectus dolor aut soluta beatae eaque eius nisi quis cupiditate, earum vel? Nisi ipsa doloribus tempore ratione.', '2025-04-27 05:01:57', '2025-04-27 05:01:57');
 
 -- --------------------------------------------------------
 
@@ -229,7 +224,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `image`, `description`, `quantity`, `price`, `category_id`, `created_by`, `created_at`, `updated_at`) VALUES
-(3, 'Tumbler with Abstract', 'product/tumbler.png', 'Stay refreshed in style with our Abstract Design Tumbler.\nFeaturing a modern, eye-catching abstract pattern, this tumbler is the perfect companion for your coffee, tea, or favorite cold drinks.', 18, 125000, 7, 2, '2025-04-26 11:56:45', '2025-05-02 00:38:22'),
+(3, 'Tumbler with Abstract', 'product/tumbler.png', 'Stay refreshed in style with our Abstract Design Tumbler.\r\nFeaturing a modern, eye-catching abstract pattern, this tumbler is the perfect companion for your coffee, tea, or favorite cold drinks.', 25, 125000, 7, 2, '2025-04-26 11:56:45', '2025-05-09 06:32:14'),
 (4, 'Totebag black cat', 'product/totebag.png', 'Carry your essentials with style and a hint of mystery.\nOur Black Cat Totebag features a sleek, minimalist black design with an adorable cat motif — perfect for cat lovers and trendsetters alike.', 19, 80000, 6, 2, '2025-04-27 07:54:17', '2025-05-01 21:09:39'),
 (6, 'Casing HP Cute', 'product/casing.png', 'Confused to find a unique and quality custom photo case? We provide custom photo softcase with HD printing, durable, and can be customized according to your wishes!', 25, 35000, 3, 2, '2025-04-28 18:32:03', '2025-05-02 00:08:07');
 
@@ -274,8 +269,8 @@ CREATE TABLE `room_chats` (
 --
 
 INSERT INTO `room_chats` (`id`, `sender`, `receiver`, `created_at`, `updated_at`) VALUES
-(1, 4, 2, '2025-05-04 13:42:20', '2025-05-04 13:42:20'),
-(2, 4, 11, '2025-05-04 14:10:16', '2025-05-04 14:10:16');
+(2, 4, 11, '2025-05-04 14:10:16', '2025-05-04 14:10:16'),
+(3, 4, 2, '2025-05-04 10:04:56', '2025-05-04 10:04:56');
 
 -- --------------------------------------------------------
 
@@ -307,7 +302,7 @@ INSERT INTO `transactions` (`id`, `user_id`, `product_id`, `quantity`, `total`, 
 (28, 4, 4, 2, 160000, 'finished', 'package has been handed over at the nearest JNE', 'Packages being sorted at DC Cakung', 'The package is being delivered to your house', 'Your package has arrived at your house', '2025-04-28 19:53:34', '2025-04-28 19:53:34'),
 (29, 9, 6, 1, 35000, 'packed', 'package has been handed over at the nearest JNE', NULL, NULL, NULL, '2025-04-28 20:48:35', '2025-04-28 20:48:35'),
 (45, 4, 3, 2, 250000, 'delivered', 'Package has been handed over at the nearest JNE', 'Packages being sorted at DC Cakung', 'The package is being delivered to your house', NULL, '2025-05-01 04:42:29', '2025-05-01 04:42:29'),
-(49, 4, 6, 3, 105000, 'packed', NULL, NULL, NULL, NULL, '2025-05-02 00:08:07', '2025-05-02 00:08:07'),
+(49, 4, 6, 3, 105000, 'packed', NULL, NULL, NULL, NULL, '2025-05-01 00:08:07', '2025-05-10 08:56:39'),
 (50, 4, 3, 1, 125000, 'canceled', NULL, NULL, NULL, NULL, '2025-05-02 00:38:22', '2025-05-02 00:38:22');
 
 -- --------------------------------------------------------
@@ -336,12 +331,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `image`, `email`, `password`, `no_hp`, `date_of_birth`, `address`, `gender`, `role_id`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'user/william.png', 'superadmin@gmail.com', '$scrypt$n=16384,r=8,p=1$F65zNnF8bqmjlI8bVWiD5w$EEitHmd5JHEEJqyeN66lts7TyVjxXOIL4ol2uAXYtdaO23raXR94Zu1HHjo59XzgYFMVgi2cTaXEQ7SPDebAYA', NULL, NULL, NULL, NULL, 1, '2025-04-21 17:05:27', '2025-04-21 17:38:04'),
-(2, 'Admin', 'user/william.png', 'admin@gmail.com', '$scrypt$n=16384,r=8,p=1$0cytaTF14Bl9fSR/nT9TRg$l4kzVWZpcNjf4h+dRCCUEV8LynOSjNX6O2FBeI5zJfTAmUET93JUP+ZQmTcA5EzHOhLeMaNM6CJAjvXCB8t71g', NULL, NULL, NULL, NULL, 2, '2025-04-21 18:01:23', '2025-04-21 18:01:23'),
+(1, 'Owner', 'user/william.png', 'superadmin@gmail.com', '$scrypt$n=16384,r=8,p=1$F65zNnF8bqmjlI8bVWiD5w$EEitHmd5JHEEJqyeN66lts7TyVjxXOIL4ol2uAXYtdaO23raXR94Zu1HHjo59XzgYFMVgi2cTaXEQ7SPDebAYA', '81267826718221', '1990-06-13', 'Jl Kemenangan Jaya 78', 'Male', 1, '2025-04-21 17:05:27', '2025-05-12 01:23:54'),
+(2, 'Admin', 'user/william.png', 'admin@gmail.com', '$scrypt$n=16384,r=8,p=1$0cytaTF14Bl9fSR/nT9TRg$l4kzVWZpcNjf4h+dRCCUEV8LynOSjNX6O2FBeI5zJfTAmUET93JUP+ZQmTcA5EzHOhLeMaNM6CJAjvXCB8t71g', '629872917218', '1996-01-10', 'JL Malik Sodikin', 'Male', 2, '2025-04-21 18:01:23', '2025-05-12 02:28:52'),
 (3, 'User', NULL, 'user@gmail.com', '$scrypt$n=16384,r=8,p=1$b06LnOUyGuUuBBG0WSmWpQ$FBBxDSNILAeKvpAyiJa9QcmiWjSfhT8suWaO2KVkyeBfpNNeicHvqAScl1OhQM8Yk5JyRrvUKs6cJ0X/Sxrvyw', NULL, NULL, NULL, NULL, 3, '2025-04-21 18:43:50', '2025-04-21 18:43:50'),
-(4, 'Keisha Maulidia', 'user/img1.png', 'user1@gmail.com', '$scrypt$n=16384,r=8,p=1$5DaYMHA3wElCv6HQBE072g$KTAjkWqkNKaksJstz7uTrg8mYwcGS2uC7od25lV/9zxEZBzwP6u/KaNnMNzAX0Rr5R/reGZ8I2ggkaT8BPcY3A', '6281287928792', '1998-02-02', 'Jl Kenangan Jaya Kusuma', 'Female', 3, '2025-04-22 00:35:15', '2025-05-01 19:05:39'),
+(4, 'Keisha Maulidia', 'user/img1.png', 'user1@gmail.com', '$scrypt$n=16384,r=8,p=1$5DaYMHA3wElCv6HQBE072g$KTAjkWqkNKaksJstz7uTrg8mYwcGS2uC7od25lV/9zxEZBzwP6u/KaNnMNzAX0Rr5R/reGZ8I2ggkaT8BPcY3A', '6281287928792', '1998-02-02', 'Jl Kenangan Jaya Kusuma', 'Female', 3, '2025-04-22 00:35:15', '2025-05-05 16:28:50'),
 (9, 'Gaisha Ramayani', NULL, 'user2@gmail.com', '$scrypt$n=16384,r=8,p=1$pm6+8lE62bbHif7K2YuuMw$TTkUbnIWU9vHECXRyzfKY1P3eIarpgC/hsyp/ziNp5brBxFglPVbShjXKe514i6S1ExohMKhhKueRsD1g4vxcg', '08127821712', '2001-10-01', 'Jl Jaya Kemenangan', 'Female', 3, '2025-04-24 23:29:25', '2025-04-24 23:29:25'),
-(11, 'Admin2', NULL, 'admin2@gmail.com', '$scrypt$n=16384,r=8,p=1$by/X8y+ka+v0BFCDnz5o5Q$TjwQPFuZylNrdu8dnpL+Wrvgq69CZuWIP1wl4Wr4fwfdE3rIq8Y5YOBDqS8xf4nFnigTEDne2L4GLXiO+DJ8aw', NULL, NULL, NULL, NULL, 2, '2025-05-04 04:47:18', '2025-05-04 04:47:18');
+(11, 'Admin2', 'user/img3.png', 'admin2@gmail.com', '$scrypt$n=16384,r=8,p=1$by/X8y+ka+v0BFCDnz5o5Q$TjwQPFuZylNrdu8dnpL+Wrvgq69CZuWIP1wl4Wr4fwfdE3rIq8Y5YOBDqS8xf4nFnigTEDne2L4GLXiO+DJ8aw', '6212791278212', '2004-01-19', 'Jl Kemana Aja', 'Female', 2, '2025-05-04 04:47:18', '2025-05-10 19:16:31');
 
 --
 -- Indexes for dumped tables
@@ -446,37 +441,37 @@ ALTER TABLE `adonis_schema`
 -- AUTO_INCREMENT untuk tabel `auth_access_tokens`
 --
 ALTER TABLE `auth_access_tokens`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
@@ -488,7 +483,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT untuk tabel `room_chats`
 --
 ALTER TABLE `room_chats`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `transactions`
@@ -500,7 +495,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
