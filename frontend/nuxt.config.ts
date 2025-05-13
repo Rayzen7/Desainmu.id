@@ -14,6 +14,13 @@ export default defineNuxtConfig({
           src: 'https://app.sandbox.midtrans.com/snap/snap.js',
           'data-client-key': 'Mid-client-9uSzCZTqCCL5tOgj',
         }
+      ],
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/logo/logo1.png',
+        }
       ]
     }
   },

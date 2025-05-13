@@ -119,7 +119,7 @@
             </nuxt-link>
             <div class="relative">
                 <input v-model="productName" class="lg:w-[860px] w-[220px] h-[40px] lg:h-[45px] outline-0 border-2 border-gray focus-within:border-black text-[12px] lg:text-[14px] font-poppins_regular px-3 rounded-md" type="text" placeholder="Enter your product name...">
-                <div class="absolute p-4 pt-6 flex flex-col gap-5 w-full rounded-b-lg" :class="productValue.length > 0 ? 'bg-white' : 'bg-transparent'">
+                <div class="absolute p-4 pt-6 flex flex-col gap-5 w-full z-50 rounded-b-lg" :class="productValue.length > 0 ? 'bg-white' : 'bg-transparent'">
                     <div v-for="(products, index) in productValue" :key="index">
                         <nuxt-link :to="`/user/product/${products.id}`">
                             <div class="flex justify-start cursor-pointer items-center gap-2">

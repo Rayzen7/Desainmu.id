@@ -3,13 +3,20 @@
     import Product from '~/components/user/productDetail/Product.vue';
     import Footer from '~/components/Footer.vue';
     import Rating from '~/components/user/productDetail/Rating.vue';
+    import AOS from 'aos';
+    import 'aos/dist/aos.css';
+    import { onMounted } from 'vue';
+
+    onMounted(() => {
+        AOS.init();
+    });
 </script>
 
 <template>
     <nav class="relative z-10">
         <Navbar/>
     </nav>
-    <section class="pb-10">
+    <section data-aos="fade-up" data-aos-duration="900" class="pb-10">
         <Product/>
         <Rating/>
     </section>

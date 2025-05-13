@@ -13,6 +13,7 @@
     interface productDataProp {
         id: number,
         name: string,
+        user: any,
         image: string,
         description: string,
         quantity: number,
@@ -67,9 +68,10 @@
             try {
                 const response = await API.get(`/product/${id}`);
                 productData.value = response.data.product;
-                receiver.value = response.data.product.user.id;
+                receiver.value = response.data.product.user.id;                
             } catch (error) {
                 console.error(error);
+                navigate.push('/');
             }
         }
 
@@ -276,6 +278,7 @@
                 <div class="flex flex-col gap-2">
                     <p class="text-secondary text-[14px] lg:text-[16px] font-poppins_medium">Personal Accesories</p>
                     <h1 class="text-black lg:text-[28px] text-[22px] font-poppins_semibold">{{ productData?.name }}</h1>
+                    <p class="font-poppins_medium text-[14px] lg:text-[16px] text-black">Created By: {{ productData?.user.username }}</p>
                     <p class="font-poppins_regular text-[12px] lg:text-[14px] text-gray">Quantity: {{ productData?.quantity }}</p>
                     <p class="text-primary font-poppins_semibold text-[18px] lg:text-[24px]">{{ RupiahFormat(productData?.price ?? 0) }}</p>
                     <div class="flex items-center gap-4">

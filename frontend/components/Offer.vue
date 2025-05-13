@@ -60,6 +60,9 @@
             <a href="#product" class="text-black hover:text-primary duration-150">Product</a>
             <a href="#product" class="text-black hover:text-primary duration-150">Categories</a>
             <a href="#feedback" class="text-black hover:text-primary duration-150">Feedback</a>
+            <nuxt-link to="/about">
+                <p class="text-black hover:text-primary duration-150">About Us</p>
+            </nuxt-link>
         </div>
         <div ref="scrollContainer" class="flex justify-start items-center overflow-hidden lg:mt-0 -mt-3 mx-4 lg:mx-20 gap-8 no-scrollbar">
             <div class="shrink-0 w-[100%]" v-for="(image, index) in offerImage" :key="index">
