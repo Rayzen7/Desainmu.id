@@ -55,7 +55,7 @@
 
 <template>
     <section class="lg:mt-4 -mt-2">
-        <div class="flex justify-center items-center gap-4 lg:gap-12 font-poppins_medium text-[14px] lg:text-[20px] mb-8 cursor-pointer">
+        <div class="flex justify-center items-center gap-4 lg:gap-12 font-poppins_medium text-[10px] lg:text-[20px] mb-8 cursor-pointer">
             <a href="#" class="text-black hover:text-primary duration-150">Home</a>
             <a href="#product" class="text-black hover:text-primary duration-150">Product</a>
             <a href="#product" class="text-black hover:text-primary duration-150">Categories</a>

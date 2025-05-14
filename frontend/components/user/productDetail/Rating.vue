@@ -201,11 +201,11 @@
                 <div class="">
                     <div class="mx-8 my-8 flex justify-between items-start">
                         <div class="flex lg:flex-row flex-col items-start gap-6">
-                            <img :src="comment.user.image === null ? `${guest}` : `${Path}/account/${comment.user.image}`" class="lg:w-[50px] w-[30px] rounded-full h-auto" alt=""/>
+                            <img :src="comment.user.image === null ? `${guest}` : `${Path}/account/${comment.user.image}`" class="lg:w-[50px] w-[40px] rounded-full h-auto" alt=""/>
                             <div class="flex flex-col gap-2">
                                 <h1 class="text-[18px] font-poppins_medium">{{ comment.user.username }}</h1>
                                 <img class="lg:w-[100px] w-[80px] h-auto" :src="stars" alt=""/>
-                                <p class="text-[14px] w-full lg:w-[850px] font-poppins_regular mt-2 text-justify">{{ comment.message }}</p>
+                                <p class="lg:text-[14px] text-[12px] w-full lg:w-[850px] font-poppins_regular mt-2 text-justify">{{ comment.message }}</p>
                                 <div class="flex items-center gap-2 mt-3 cursor-pointer" @click="handleShare(comment.message)">
                                     <img class="w-[20px] h-auto" :src="share" alt=""/>
                                     <p class="text-[12px] lg:text-[14px] font-poppins_regular">Share</p>
