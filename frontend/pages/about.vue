@@ -9,5 +9,5 @@
     <section class="mt-12">
         <About/>
     </section>
-    <Footer/>
+    <Footer/> 
 </template>
