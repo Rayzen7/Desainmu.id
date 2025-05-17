@@ -54,8 +54,8 @@
         <div class="mt-8 flex flex-col gap-8" v-if="transactionData.length > 0">
             <div class="" v-for="(transaction, index) in transactionData" :key="index" data-aos="fade-up" data-aos-duration="900">
                 <div class="border-2 bg-white flex lg:flex-row flex-col justify-between p-5 w-full lg:w-[90%] border-primary rounded-xl" data-aos="fade-up" data-aos-duration="900">
-                    <div class="flex lg:flex-row flex-col justify-start items-center gap-2">
-                        <img class="lg:w-[110px] w-[120px] h-auto" :src="`${Path}/image/${transaction.product.image}`" alt=""/>
+                    <div class="flex lg:flex-row flex-col justify-start items-center gap-6">
+                        <img class="lg:w-[110px] w-[120px] h-auto rounded-md" :src="`${Path}/image/${transaction.product.image}`" alt=""/>
                         <div class="flex flex-col w-full lg:gap-1 gap-2">
                             <h1 class="text-[18px] font-poppins_medium">{{ transaction.product.name }}</h1>
                             <p class="text-[14px] text-gray font-poppins_regular">{{ transaction.product.category.name }}</p>
@@ -73,9 +73,9 @@
                 <div class="mt-12 lg:ml-10 ml-4 relative">
                   <div class="lg:w-[4px] w-[2px] bg-green-500 relative h-[100px]">
                     <div class="absolute top-0 py-6 flex flex-col gap-8 lg:gap-14 lg:-translate-x-[2.5%] -translate-x-[4%]">
-                      <div class="items-center gap-8 shrink-0" :class="transaction.deliveredStatus1 ? 'flex' : 'hidden'">
+                      <div class="items-center gap-8 shrink-0" :class="transaction.deliveredStatus4 ? 'flex' : 'hidden'">
                         <div class="lg:w-[35px] w-[25px] h-[25px] lg:h-[35px] rounded-full bg-white border-[3px] border-green-500"></div>
-                        <p class="text-[12px] lg:text-[14px] bg-green-500 flex-1 w-[220px] lg:w-[600px] text-white font-poppins_medium p-3 rounded-md">{{ transaction.deliveredStatus1 }}</p>
+                        <p class="text-[12px] lg:text-[14px] bg-green-500 flex-1 w-[220px] lg:w-[600px] text-white font-poppins_medium p-3 rounded-md">{{ transaction.deliveredStatus4 }}</p>
                       </div>                    
                     </div>
                   </div>

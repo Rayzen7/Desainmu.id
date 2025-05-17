@@ -311,12 +311,14 @@
                         <input v-model="searchName" class="text-[12px] border-none outline-none font-poppins_regular" type="text" placeholder="Search">
                     </div>
                     <div class="flex mt-3 flex-col gap-6 overflow-hidden" v-for="(user, index) in allUserData" v-if="allUserData.length > 0" :key="index">                        
-                        <nuxt-link :to="`/admin/chat?user=${user.sender_user.id}&room=${user.id}`">
+                        <nuxt-link :to="`/admin/chat?user=${user.receiver === 1 ? user.receiver_user.id : user.sender_user.id}&room=${user.id}`">
                             <div class="flex justify-start gap-3 items-center cursor-pointer shrink-0" @click="handleOpen">
-                                <img :class="user.sender_user.image === null ? 'w-[32px] h-[32px]' : 'w-[38px] h-[38px]'" class="rounded-full " :src="user.sender_user.image === null ? guest : `${Path}/account/${user.sender_user.image}`" alt=""/>
+                                <img v-if="user.receiver === 1" :class="user.receiver_user.image === null ? 'w-[32px] h-[32px]' : 'w-[38px] h-[38px]'" class="rounded-full " :src="user.receiver_user.image === null ? guest : `${Path}/account/${user.receiver_user.image}`" alt=""/>
+                                <img v-else :class="user.sender_user.image === null ? 'w-[32px] h-[32px]' : 'w-[38px] h-[38px]'" class="rounded-full " :src="user.sender_user.image === null ? guest : `${Path}/account/${user.sender_user.image}`" alt=""/>
                                 <div class="flex justify-between w-full items-start">
                                     <div>
-                                        <h1 class="text-[14px] text-primary font-poppins_medium">{{ user.sender_user.username }}</h1>
+                                        <h1 v-if="user.receiver === 1" class="text-[14px] text-primary font-poppins_medium">{{ user.receiver_user.username }}</h1>
+                                        <h1 v-else class="text-[14px] text-primary font-poppins_medium">{{ user.sender_user.username }}</h1>
                                         <p class="text-[12px] font-poppins_regular text-gray">
                                             {{
                                               user.chat.length > 0

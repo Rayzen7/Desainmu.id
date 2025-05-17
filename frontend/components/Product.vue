@@ -124,10 +124,10 @@
                 <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-12" :class="productData.length == 0 ? 'justify-center' : 'justify-start'">
                     <div class="" v-if="productData.length > 0" v-for="(product, index) in productData" :key="index">
                         <nuxt-link :to="`/user/product/${product.id}`">
-                            <div class="flex lg:flex-row flex-col relative cursor-pointer lg:px-2 p-4 justify-start items-center border-2 border-primary w-[150px] lg:w-[275px] min-h-[230px] lg:min-h-[130px] rounded-xl">
-                                <img :src="`${Path}/image/${product.image}`" alt="" class="w-[80px] h-auto"/>
+                            <div class="flex lg:flex-row flex-col relative cursor-pointer lg:px-2 p-4 gap-3 justify-start items-center border-2 border-primary w-[150px] lg:w-[275px] min-h-[230px] lg:min-h-[130px] rounded-xl">
+                                <img :src="`${Path}/image/${product.image}`" alt="" class="w-[80px] rounded-md h-auto"/>
                                 <div class="flex flex-col gap-1 lg:mt-0 mt-3">
-                                    <h1 class="lg:text-[15px] text-[14px] text-start font-poppins_medium">{{ product.name }}</h1>   
+                                    <h1 class="lg:text-[15px] text-[14px] text-start font-poppins_medium">{{ product.name.slice(0, 10) + '...' }}</h1>   
                                     <p class="text-[12px] text-start text-gray font-poppins_regular">{{ product.category.name }}</p>
                                     <p class="text-[14px] text-start font-poppins_regular text-secondary">{{ RupiahFormat(product.price) }}</p>
                                 </div>

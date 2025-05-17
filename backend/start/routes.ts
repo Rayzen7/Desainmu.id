@@ -98,10 +98,11 @@ router.group(() => {
       // Transaction
       router.get('/transaction', [TransactionsController, 'indexAdmin'])
       router.get('/transaction/:id', [TransactionsController, 'show'])
-      router.put('/transaction/:id', [TransactionsController, 'update'])
+      router.put('/transaction/:id', [TransactionsController, 'update'])      
 
       // Comment
       router.get('/comment/:id', [CommentsController, 'show'])
+      router.get('/comment', [CommentsController, 'indexAdmin'])
       router.delete('/comment/:id', [CommentsController, 'destroy'])
     }).prefix('/admin').use(middleware.role(2))
 

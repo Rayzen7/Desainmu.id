@@ -24,13 +24,14 @@
         AOS.init();
         const fetchComment = async() => {
             try {
-                const response = await API.get('/comment', {
+                const response = await API.get('/admin/comment', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
 
                 commentData.value = response.data.comment;
+                console.log(commentData.value)
             } catch (error) {
                 console.error(error);
             }
@@ -83,7 +84,7 @@
             <h1 class="text-[24px] lg:text-[30px] font-poppins_semibold">User Comment</h1>
         </div>
         <div class="mt-8 flex justify-center lg:justify-start items-start gap-10 flex-wrap">
-            <div class="" v-for="(comment, index) in commentData" :key="index">
+            <div v-if="commentData.length > 0" class="" v-for="(comment, index) in commentData" :key="index">
                 <div class="bg-white w-full lg:w-[280px] p-4 rounded-md">
                     <div class="flex items-center gap-4">
                         <img :src="comment.user.image ? `${Path}/account/${comment.user.image}` : guest" class="w-[50px] h-auto rounded-full" alt=""/>
@@ -106,6 +107,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="mt-2" v-else>
+                <p class="text-gray font-poppins_medium text-[24px]">Data not Found</p>
             </div>
         </div>
     </section>

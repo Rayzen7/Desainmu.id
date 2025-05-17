@@ -267,11 +267,11 @@
     <section class="mx-8 mt-4">
         <div class="flex justify-center gap-20 items-center lg:flex-row flex-col">
             <div class="lg:w-[500px] w-[300px] lg:mx-0 mx-auto">
-                <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[500px] lg:mx-0 mx-auto w-[200px] h-auto" alt=""/>
-                <div class="flex items-center gap-4 lg:mt-0 mt-10">
-                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[166px] w-[90px] h-auto" alt=""/>
-                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[166px] w-[90px] h-auto" alt=""/>
-                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[166px] w-[90px] h-auto" alt=""/>
+                <img :src="`${Path}/image/${productData?.image}`" class="lg:w-full lg:mx-0 mx-auto rounded-md w-[300px] h-auto" alt=""/>
+                <div class="flex items-center gap-4 lg:mt-4 mt-10">
+                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[156px] w-[90px] h-auto rounded-md" alt=""/>
+                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[156px] w-[90px] h-auto rounded-md" alt=""/>
+                    <img :src="`${Path}/image/${productData?.image}`" class="lg:w-[156px] w-[90px] h-auto rounded-md" alt=""/>
                 </div>
             </div>
             <div class="lg:w-[600px] w-[300px] lg:mx-0 mx-auto flex flex-col gap-6">

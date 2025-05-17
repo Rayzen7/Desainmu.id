@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import { commentValidate, messagesProvider } from '#validators/post_validate'
 import Comment from '#models/comment'
+import Product from '#models/product'
 
 export default class CommentsController {
   async index({ request, response }: HttpContext) {
@@ -12,6 +13,21 @@ export default class CommentsController {
     }
 
     const comment = await query
+    return response.status(200).json({
+      comment,
+      commentCount: comment.length,
+    })
+  }
+
+  async indexAdmin({ response, auth }: HttpContext) {
+    const user = await auth.authenticate()
+    const product = await Product.query().where('created_by', user.id)
+    const productId = product.map((products) => products.id)
+
+    const comment = await Comment.query()
+      .preload('user')
+      .preload('product')
+      .whereIn('product_id', productId)
     return response.status(200).json({
       comment,
       commentCount: comment.length,

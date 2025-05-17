@@ -61,8 +61,8 @@
         <div class="mt-8 flex flex-col gap-8" v-if="transactionData.length > 0">
             <div class="" v-for="(transaction, index) in transactionData" :key="index" data-aos="fade-up" data-aos-duration="900">
                 <div class="border-2 bg-white flex lg:flex-row flex-col justify-between p-5 w-full lg:w-[90%] border-red-500 rounded-xl" data-aos="fade-up" data-aos-duration="900">
-                    <div class="flex lg:flex-row flex-col justify-start items-center gap-2">
-                        <img class="lg:w-[110px] w-[120px] h-auto" :src="`${Path}/image/${transaction.product.image}`" alt=""/>
+                    <div class="flex lg:flex-row flex-col justify-start items-center gap-6">
+                        <img class="lg:w-[110px] w-[120px] h-auto rounded-md" :src="`${Path}/image/${transaction.product.image}`" alt=""/>
                         <div class="flex flex-col w-full lg:gap-1 gap-2">
                             <h1 class="text-[18px] font-poppins_medium">{{ transaction.product.name }}</h1>
                             <p class="text-[14px] text-gray font-poppins_regular">{{ transaction.product.category.name }}</p>
@@ -74,16 +74,6 @@
                         <button class="text-[14px] cursor-pointer lg:w-fit font-poppins_medium text-primary border-2 w-[160px] px-6 border-primary rounded-md p-2"  @click="handleTransactionProduct(transaction.product.id)">Buy Back</button>
                         <p class="lg:text-[14px] text-[12px] text-gray font-poppins_regular">{{ `Total ${transaction.quantity} product: ${RupiahFormat(transaction.total)}` }}</p>
                     </div>
-                </div>
-                <div class="mt-8 ml-10 relative">
-                  <div class="w-[4px] bg-green-500 relative" :class="transaction.deliveredStatus4 ? 'h-[100px]' : 'h-0'">
-                    <div class="absolute top-0 py-6 flex flex-col gap-14 -translate-x-[2.5%]">                     
-                      <div class="items-center gap-8 shrink-0" :class="transaction.deliveredStatus4 ? 'flex' : 'hidden'">
-                        <div class="w-[35px] h-[35px] rounded-full bg-white border-[3px] border-green-500"></div>
-                        <p class="text-[14px] bg-green-500 flex-1 w-[600px] text-white font-poppins_medium p-3 rounded-md">{{ transaction.deliveredStatus4 }}</p>
-                      </div>                      
-                    </div>
-                  </div>
                 </div>
             </div>
         </div>

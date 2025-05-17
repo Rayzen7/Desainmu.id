@@ -40,6 +40,7 @@ export default class RoomChatsController {
         chatQuery.preload('sender_user').preload('receiver_user')
       })
       .where('receiver', user.id)
+      .orWhere('receiver', 1)
 
     const filtered = name
       ? roomChat.filter((room) =>

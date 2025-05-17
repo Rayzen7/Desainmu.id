@@ -49,28 +49,28 @@
             } catch (error) {
                 
             }
-        }
-
+        }        
+        
         watch(
-        () => searchName.value,
-        async(newValue: any) => {
+            () => searchName.value,
+            async(newValue: any) => {
             if (newValue) {
                 fetchUser();
             } else {
                 fetchUser();
             }
         });
-
+        
         watch(
-        () => statusValue.value,
-        async(newValue: any) => {
-            if (newValue) {
-                fetchUser();
-            } else {
-                fetchUser();
-            }
-        });
-
+            () => statusValue.value,
+            async(newValue: any) => {
+                if (newValue) {
+                    fetchUser();
+                } else {
+                    fetchUser();
+                }
+            });
+            
         fetchUser();
     });
 
